@@ -13,6 +13,7 @@ a
 
 #header
 {
+    z-index: 3;
     height: 50px;
     padding: 0;
     margin: 0;
