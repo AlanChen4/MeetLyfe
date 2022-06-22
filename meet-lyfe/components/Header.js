@@ -15,7 +15,7 @@ export default function Header()
                 <a href="explore">Explore</a>
             </div>
             <div id="pfp" className="light">
-                <img src="./images/mikepfp.png" height="50" alt="PFP"></img>
+                <a href="profile"><img src="./images/mikepfp.png" height="50" alt="PFP"></img></a>
             </div>
         </div>
     );

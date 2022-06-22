@@ -1,5 +1,5 @@
 //imported from api
-import Header from './Header';
+import Header from '../components/Header';
 import { useState, useEffect } from 'react';
 
 //local vars
