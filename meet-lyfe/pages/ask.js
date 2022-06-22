@@ -70,7 +70,7 @@ export default function Ask()
             setCurrentQ(num);
           }, []);
         console.log(currentQ);
-        let q = questions[num];
+        let q = questions[currentQ];
         return(
             <div id = "askcontainer">
                 <h2>#{num}: {q.title}</h2>
