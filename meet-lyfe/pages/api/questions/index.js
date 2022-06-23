@@ -1,4 +1,4 @@
-import {data} from '../../ask.js';
+import {data} from '../../data.js';
 
 export default function handler(request, response) {
   const { method } = request;
