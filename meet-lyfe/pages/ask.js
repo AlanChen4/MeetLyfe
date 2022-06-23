@@ -1,13 +1,15 @@
 //imported from api
 import Header from '../components/Header';
+import { data } from './data';
+import axios from 'axios';
+import react from 'react';
+import ReactDOMServer from 'react-dom/server';
 
 //page render
 export default function Ask()
-{
+{ 
     //init setup
-    let x = questions.sort(function(a,b){return b.id - a.id});
-    console.log(x);
-
+    let x = data.sort(function(a,b){return b.id - a.id});
     function getQlist()
     {
         let qstr = '';
@@ -19,9 +21,19 @@ export default function Ask()
     function writeNavHeading(num)
     {
         let q = x.find(f => f.id == num);
-        console.log(q);
-        let jsx = <p id = {'q' + num} key = {'q' + num} className = "q light" onClick = {function() {}}> #{num}: {q.title}</p>;
+        let jsx = <p id = {'q' + num} key = {'q' + num} className = "q light" onClick = {function() {getQ(num)}}> #{num}: {q.title}</p>;
         return jsx;
+    }
+
+    function getQ(num)
+    {
+        let y = {};
+        axios.get('/api/questions/' + num, {})
+            .then(function (response) {
+                y = response.data;
+                document.getElementById('mainask').innerHTML = ReactDOMServer.renderToStaticMarkup(displayQ(num));
+            });    
+        
     }
 
     function displayQ(num)
@@ -47,7 +59,7 @@ export default function Ask()
                 </div>
             </div>
             <div id="mainask" className="main light">
-                {displayQ(x[2].id)}
+                {displayQ(x[0].id)}
             </div>
         </div>
     )

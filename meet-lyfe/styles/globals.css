@@ -131,7 +131,7 @@ a
 /*Nav/Qbar*/
 #qbar
 {
-    margin-top: 50px;
+    margin-top: 60px;
     margin-right: 0px;
     width: max(170px, 20%);
     text-align: center;
@@ -163,7 +163,7 @@ a
 #mainask
 {
     padding: 10px;
-    padding-top: 50px;
+    padding-top: 60px;
     margin-left: max(170px, 20%);
 }
 
