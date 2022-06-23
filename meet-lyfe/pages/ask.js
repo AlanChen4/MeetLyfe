@@ -1,76 +1,68 @@
 //imported from api
 import Header from '../components/Header';
-import { useState, useEffect } from 'react';
 
 //local vars
-let questions = {
-1: {
+export let data = [
+{
+    id: 1,
     title : 'What truly, really, is JavaScript?',
     author : 'Michael Phillips',
     body : "I don't understand what JavaScript is. Is it a language or something?",
     a : true,
     replies : [{author : 'Brandon Kaminski', reply : 'yes lmao get good'}],
 },
-2: {
+{
+    id: 2,
     title : 'Why are we here?',
     author : 'Michael Phillips',
     body : "Just to suffer? Nah, we're vibing",
     a: true,
     replies : [],
 },
-3: {
+{
+    id: 3,
     title : 'What is this?',
     author : 'Brandon Kaminski',
     body : "Anyone know?",
     a : false,
     replies : [],
 },
-4: {
+{
+    id : 4,
     title : 'MetLife is how old?',
     author : 'Alan Chen',
     body : "I was trying to figure it out the other day.",
     a : false,
     replies : [{author: 'Brandon Kaminski', reply: 'it was founded in 1868'}],
 },
-}
-
-// function id(n)
-// {
-// return document.getElementById(n);
-// }
+]
 
 //page render
 export default function Ask()
 {
     //init setup
-    let x = Object.keys(questions).sort(function(a,b){return b - a});
-    //state vars
-    const [currentQ, setCurrentQ] = useState(x[0]);
-
+    let x = questions.sort(function(a,b){return b.id - a.id});
+    console.log(x);
 
     function getQlist()
     {
         let qstr = '';
-        qstr = x.map(n => writeNavHeading(n));
-        console.log(qstr);
+        qstr = x.map(n => writeNavHeading(n.id));
         return <div id = 'qlist'>{qstr}</div>
     }
 
     //functions
     function writeNavHeading(num)
     {
-        let q = questions[num];
-        let jsx = <p id = {'q' + num} key = {'q' + num} className = "q light" onClick = {function() {displayQ(currentQ)}}> #{num}: {q.title}</p>;
+        let q = x.find(f => f.id == num);
+        console.log(q);
+        let jsx = <p id = {'q' + num} key = {'q' + num} className = "q light" onClick = {function() {}}> #{num}: {q.title}</p>;
         return jsx;
     }
 
     function displayQ(num)
     {
-        useEffect(() => {
-            setCurrentQ(num);
-          }, []);
-        console.log(currentQ);
-        let q = questions[currentQ];
+        let q = x.find(f => f.id == num);
         return(
             <div id = "askcontainer">
                 <h2>#{num}: {q.title}</h2>
@@ -91,7 +83,7 @@ export default function Ask()
                 </div>
             </div>
             <div id="mainask" className="main light">
-                {displayQ(currentQ)}
+                {displayQ(x[2].id)}
             </div>
         </div>
     )
