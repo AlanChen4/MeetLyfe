@@ -133,11 +133,8 @@ a
 {
     margin-top: 60px;
     margin-right: 0px;
-    width: max(170px, 20%);
+    /*width: max(170px, 20%);*/
     text-align: center;
-    border-right: 4px solid #007abc;
-    height: 100%;
-    position: fixed;
 }
 
 #qbar .q
@@ -147,7 +144,6 @@ a
   text-overflow: ellipsis;*/
   text-align: left;
   padding: 5px;
-  width: 95%;
   margin:0;
 }
 
@@ -159,12 +155,26 @@ a
     color: white;
 }
 
+#newqbar.light:hover
+{
+    background-color: #0061A0;
+}
+
 /*MAIN*/
 #mainask
 {
-    padding: 10px;
     padding-top: 60px;
+    /*
     margin-left: max(170px, 20%);
+    background-color: #f2f2f2;\*/
+    border-left: 4px solid #007abc; 
+}
+
+#askcontainer
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 .main.light
@@ -172,3 +182,30 @@ a
     background-color: #f2f2f2;
 }
 
+.reply.light
+{
+    padding: 10px;
+    border-radius: max(10px, 2%);
+    background-color:white;
+    width: 90%;
+    margin: 5px;
+}
+
+
+/* non-changers */
+.replyarea
+{
+    resize:both;
+    width: min(70%, 500px);
+    height: 4em;
+    text-align: left;
+    padding: 10px;
+    margin: 5px;
+}
+
+
+#newqtitle
+{
+    margin: 10px;
+    width: min(70%, 500px);
+}

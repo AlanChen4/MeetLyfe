@@ -8,6 +8,8 @@ import ReactDOMServer from 'react-dom/server';
 //page render
 export default function Ask()
 { 
+    //current q text
+    let qtext = '';
     //init setup
     let x = data.sort(function(a,b){return b.id - a.id});
     function getQlist()
@@ -30,12 +32,49 @@ export default function Ask()
         let y = {};
         axios.get('/api/questions/' + num, {})
             .then(function (response) {
-                y = response.data;
-                document.getElementById('mainask').innerHTML = ReactDOMServer.renderToStaticMarkup(displayQ(num));
-            });    
+            y = response.data;
+            document.getElementById('mainask').innerHTML = ReactDOMServer.renderToStaticMarkup(displayQ(num));
+            }
+        );    
         
     }
 
+    function newQuestion()
+    {
+       let jsx = <div id = "askcontainer">
+                <h2>New Question</h2>
+                <span><input type="checkbox" id="anonycheck"/> anonymous</span>
+                <br/>
+                <input type="text" id = "newqtitle" placeholder="Title of question"/>
+                <br/>
+                <textarea id = "newqtext" placeholder="Type question here..." className='replyarea'>{qtext}</textarea>
+                <br/>
+                <button id = 'sendQ' onClick={function() {sendNewQ()}}>Send</button>
+            </div>
+         document.getElementById('mainask').innerHTML = ReactDOMServer.renderToStaticMarkup(jsx);
+    }
+
+    function sendNewQ()
+    {
+        //TODO do tags
+        console.log('triggered method');
+        let newqtext = document.getElementById('newqtext').value;
+        let toSend = {
+            title : document.getElementById('newqtitle').value,
+            a : document.getElementById('anonycheck').value,
+            body : newqtext,
+            author : 'Brandon Kaminski',
+            replies : [],
+        }
+        if(newqtext.length > 0)
+        {
+            axios.post('/api/questions/', toSend)
+                .then(function (response) {
+                    console.log(response)
+                }
+            ); 
+        }
+    }
     function displayQ(num)
     {
         let q = x.find(f => f.id == num);
@@ -44,7 +83,16 @@ export default function Ask()
                 <h2>#{num}: {q.title}</h2>
                 <p className="qpar">{q.body}</p>
                 <p className="author">Asked by {q.a ? 'anonymous' : q.author}</p>
-                {q.replies.map(r => <div className="reply"><p><b>{r.author}</b> says:</p> <p>{r.reply}</p></div>)}
+                
+                <textarea placeholder = {q.a ? 'Reply here...' : `Reply to ${q.author} here...`} className='replyarea'/>
+                {q.replies.map(r => 
+                <div className="card mx-1 mb-2">
+                    <div class = 'card-body'>
+                        <p class = "card-text"><b>{r.author}</b> says:<br/>{r.reply}</p>
+                    </div>
+                </div>
+                )}
+                
             </div>
         );
     }
@@ -52,14 +100,17 @@ export default function Ask()
     return (
         <div id = "fullbody">
             <Header/>
-            <div id="qbar">
-                <div>
-                    <h2>Questions</h2>
-                    {getQlist()}
+            <div class = "row">
+                <div id="qbar" className="col-3">
+                    <div>
+                        <h2>Questions</h2>
+                        <p id = 'newqbar' className = 'q light' onClick={function() {newQuestion()}}>New Question...</p>
+                        {getQlist()}
+                    </div>
                 </div>
-            </div>
-            <div id="mainask" className="main light">
-                {displayQ(x[0].id)}
+                <div id="mainask" className="main light col-9">
+                    {displayQ(x[0].id)}
+                </div>
             </div>
         </div>
     )

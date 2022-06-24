@@ -29,6 +29,6 @@ export let data = [
         author : 'Alan Chen',
         body : "I was trying to figure it out the other day.",
         a : false,
-        replies : [{author: 'Brandon Kaminski', reply: 'it was founded in 1868'}],
+        replies : [{author: 'Brandon Kaminski', reply: 'it was founded in 1868'}, {author: 'Alan Chen', reply: 'thanks!'}],
     },
     ]
