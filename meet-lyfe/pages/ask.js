@@ -49,9 +49,10 @@ export default function Ask()
                 <br/>
                 <textarea id = "newqtext" placeholder="Type question here..." className='replyarea'>{qtext}</textarea>
                 <br/>
-                <button id = 'sendQ' onClick={function() {sendNewQ()}}>Send</button>
+                <button class = "btn primary" id = 'sendQ' onClick={function() {sendNewQ()}}>Send</button>
             </div>
          document.getElementById('mainask').innerHTML = ReactDOMServer.renderToStaticMarkup(jsx);
+         
     }
 
     function sendNewQ()
@@ -87,8 +88,8 @@ export default function Ask()
                 <textarea placeholder = {q.a ? 'Reply here...' : `Reply to ${q.author} here...`} className='replyarea'/>
                 {q.replies.map(r => 
                 <div className="card mx-1 mb-2">
-                    <div class = 'card-body'>
-                        <p class = "card-text"><b>{r.author}</b> says:<br/>{r.reply}</p>
+                    <div className = 'card-body'>
+                        <p className = "card-text"><b>{r.author}</b> says:<br/>{r.reply}</p>
                     </div>
                 </div>
                 )}

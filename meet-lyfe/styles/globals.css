@@ -79,7 +79,6 @@ a
 {
     background-color: #f2f2f2;
     filter: none;
-    
 }
 
 #header .selected.light
@@ -208,4 +207,10 @@ a
 {
     margin: 10px;
     width: min(70%, 500px);
+}
+
+#sendQ
+{
+    background-color: #007abc;
+    color: #f2f2f2;
 }
