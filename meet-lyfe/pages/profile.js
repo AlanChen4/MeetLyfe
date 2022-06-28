@@ -18,17 +18,17 @@ export default function Profile() {
                 <div className="col-md-8 bg-light py-5">
                     <div className="card mx-5 mb-3">
                         <div className="card-body">
-                            <h5 class="card-title">Located in...</h5>
+                            <h5 className="card-title">Located in...</h5>
                         </div>
                     </div>
                     <div className="card mx-5 mb-3">
                         <div className="card-body">
-                            <h5 class="card-title">Some of your skills include...</h5>
+                            <h5 className="card-title">Some of your skills include...</h5>
                         </div>
                     </div>
                     <div className="card mx-5 mb-3">
                         <div className="card-body">
-                            <h5 class="card-title">In your free time you...</h5>
+                            <h5 className="card-title">In your free time you...</h5>
                         </div>
                     </div>
                 </div>
