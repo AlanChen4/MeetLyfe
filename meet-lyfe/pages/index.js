@@ -1,16 +1,16 @@
-import Head from 'next/head'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
 
 export default function Home() {
     return (
-        <div>
-            <Head>
-                <title>ACE</title>
-                <meta name="description" content="MetLife ACE" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Navbar />
-            <h1>Index</h1>
+        <div style={{height: "90vh"}}>
+            <div className="h-100">
+                <Navbar />
+                <div className="d-flex h-100">
+                    <Sidebar />
+                    <h1>Test content</h1>
+                </div>
+            </div>
         </div>
     )
 }
