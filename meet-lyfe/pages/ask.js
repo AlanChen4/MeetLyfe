@@ -39,22 +39,6 @@ export default function Ask()
         
     }
 
-    function newQuestion()
-    {
-       let jsx = <div id = "askcontainer">
-                <h2>New Question</h2>
-                <span><input type="checkbox" id="anonycheck"/> anonymous</span>
-                <br/>
-                <input type="text" id = "newqtitle" placeholder="Title of question"/>
-                <br/>
-                <textarea id = "newqtext" placeholder="Type question here..." className='replyarea'>{qtext}</textarea>
-                <br/>
-                <button class = "btn primary" id = 'sendQ' onClick={function() {sendNewQ()}}>Send</button>
-            </div>
-         document.getElementById('mainask').innerHTML = ReactDOMServer.renderToStaticMarkup(jsx);
-         
-    }
-
     function sendNewQ()
     {
         //TODO do tags
@@ -71,11 +55,29 @@ export default function Ask()
         {
             axios.post('/api/questions/', toSend)
                 .then(function (response) {
-                    console.log(response)
+                    console.log(response);
                 }
             ); 
         }
     }
+
+    function newQuestion()
+    {
+       let jsx = <div id = "askcontainer">
+                <h2>New Question</h2>
+                <span><input type="checkbox" id="anonycheck"/> anonymous</span>
+                <br/>
+                <input type="text" id = "newqtitle" placeholder="Title of question"/>
+                <br/>
+                <textarea id = "newqtext" placeholder="Type question here..." className='replyarea'>{qtext}</textarea>
+                <br/>
+                <button className = "btn primary" id = 'sendQ' onClick = {function() {newQuestion()}}>Send</button>
+            </div>
+         document.getElementById('mainask').innerHTML = ReactDOMServer.renderToStaticMarkup(jsx);
+         
+    }
+
+
     function displayQ(num)
     {
         let q = x.find(f => f.id == num);
@@ -101,7 +103,7 @@ export default function Ask()
     return (
         <div id = "fullbody">
             <Header/>
-            <div class = "row">
+            <div className = "row">
                 <div id="qbar" className="col-3">
                     <div>
                         <h2>Questions</h2>

@@ -10,7 +10,7 @@ export default function SidebarTest()
                         </a>
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                             <li class="nav-item">
-                                <a href="#" class="nav-link align-middle px-0">
+                                <a href="#" class="nav-link text-white align-middle px-0">
                                    <span class="ms-1 d-none d-sm-inline">Home</span>
                                 </a>
                             </li>

@@ -199,18 +199,18 @@ a
     height: 4em;
     text-align: left;
     padding: 10px;
-    margin: 5px;
-}
-
-
-#newqtitle
-{
-    margin: 10px;
-    width: min(70%, 500px);
 }
 
 #sendQ
 {
     background-color: #007abc;
     color: #f2f2f2;
+}
+
+input[type='text'], textarea
+{
+    border-radius: 10px;
+    width: min(70%, 500px);
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
