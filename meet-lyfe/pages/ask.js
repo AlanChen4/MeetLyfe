@@ -95,7 +95,7 @@ export default function Ask()
                 <br/>
                 <textarea id = "newqtext" placeholder="Type question here..." className='replyarea'>{qtext}</textarea>
                 <br/>
-                <button className = "btn primary" id = 'sendQ' onClick = {function() {newQuestion()}}>Send</button>
+                <button className = "btn primary" id = 'sendQ' onClick = {function() {sendNewQ()}}>Send</button>
             </div>
          document.getElementById('mainask').innerHTML = ReactDOMServer.renderToStaticMarkup(jsx);
          
