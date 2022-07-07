@@ -61,6 +61,30 @@ export default function Ask()
         }
     }
 
+    function sendNewR(num)
+    {
+        //TODO do tags
+        
+        let replytext = document.getElementById('thisreply').value;
+        console.log('triggered method', num);
+        console.log(replytext);
+        if(replytext.length > 0)
+        {
+            axios.get('/api/questions/' + num, {})
+                .then(function (response) {
+                    let gets = response.data.replies;
+                    console.log(gets);
+                    gets.push({author: 'Brandon Kaminski', reply: replytext})
+                    axios.post('/api/questions/' + num, gets)
+                        .then(function (response) {
+                            console.log(response);
+                        }
+                    );  
+                }
+            ); 
+        }
+    }
+
     function newQuestion()
     {
        let jsx = <div id = "askcontainer">
@@ -87,9 +111,12 @@ export default function Ask()
                 <p className="qpar">{q.body}</p>
                 <p className="author">Asked by {q.a ? 'anonymous' : q.author}</p>
                 
-                <textarea placeholder = {q.a ? 'Reply here...' : `Reply to ${q.author} here...`} className='replyarea'/>
+                <textarea id='thisreply' placeholder = {q.a ? 'Reply here...' : `Reply to ${q.author} here...`} className='replyarea'/>
+                <br/>
+                <button onClick={function() {sendNewR(num)}} className='btn btn-primary mb-4'>Send</button>
+                <p id='replies'>Replies ({q.replies.length})</p>
                 {q.replies.map(r => 
-                <div className="card mx-1 mb-2">
+                <div className="card mb-2">
                     <div className = 'card-body'>
                         <p className = "card-text"><b>{r.author}</b> says:<br/>{r.reply}</p>
                     </div>
