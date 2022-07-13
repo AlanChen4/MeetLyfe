@@ -8,6 +8,12 @@ export default async function (req, res) {
     if (method === "GET") {
         return res.status(200).json(json_data);
     }
+
+    if (method === "POST") {
+           const { body } = request;
+           data.push({ ...body, id: data.length + 1 });
+           return response.status(200).json(json_data);
+    }
   }
   catch (error) {
     console.log(error)

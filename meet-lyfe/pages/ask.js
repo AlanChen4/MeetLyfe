@@ -1,10 +1,11 @@
 //imported from api
 import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import { data } from './data';
 import axios from 'axios';
 import react from 'react';
 import ReactDOMServer from 'react-dom/server';
-
+import path from 'path';
 //page render
 export default function Ask()
 { 
@@ -70,19 +71,17 @@ export default function Ask()
         console.log(replytext);
         if(replytext.length > 0)
         {
-            axios.get('/api/questions/' + num, {})
+            let gets = {author: 'Brandon Kaminski', reply: replytext}
+            axios.post('/api/questions/' + num, gets)
                 .then(function (response) {
-                    let gets = response.data.replies;
-                    console.log(gets);
-                    gets.push({author: 'Brandon Kaminski', reply: replytext})
-                    axios.post('/api/questions/' + num, gets)
-                        .then(function (response) {
-                            console.log(response);
-                        }
-                    );  
+                    console.log(response.data);
                 }
-            ); 
+            );
         }
+        console.log(path.join(process.cwd(), 'data/data.json'))
+        // const fileName = '../data/file.json';    
+        // const file = require(fileName);   
+        // console.log(file);
     }
 
     function newQuestion()
@@ -129,7 +128,7 @@ export default function Ask()
 
     return (
         <div id = "fullbody">
-            <Header/>
+            <Navbar/>
             <div className = "row">
                 <div id="qbar" className="col-3">
                     <div>
