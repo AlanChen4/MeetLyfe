@@ -92,7 +92,7 @@ export default function Ask()
                 <br/>
                 <input type="text" id = "newqtitle" placeholder="Title of question"/>
                 <br/>
-                <textarea id = "newqtext" placeholder="Type question here..." className='replyarea'>{qtext}</textarea>
+                <textarea id = "newqtext" placeholder="Type question here..." className='replyarea'/>
                 <br/>
                 <button className = "btn primary" id = 'sendQ' onClick = {function() {sendNewQ()}}>Send</button>
             </div>
@@ -114,8 +114,8 @@ export default function Ask()
                 <br/>
                 <button onClick={function() {sendNewR(num)}} className='btn btn-primary mb-4'>Send</button>
                 <p id='replies'>Replies ({q.replies.length})</p>
-                {q.replies.map(r => 
-                <div className="card mb-2">
+                {q.replies.map((r, index) => 
+                <div key={'reply' + q.id + '-' + index} className="card mb-2">
                     <div className = 'card-body'>
                         <p className = "card-text"><b>{r.author}</b> says:<br/>{r.reply}</p>
                     </div>
