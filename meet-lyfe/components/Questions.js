@@ -44,13 +44,20 @@ export default function Questions(props) {
      <div className="col-md-3">
        <h2 className="text-center p-3">Questions</h2>
        <div className="list-group list-group-flush border-bottom overflow-auto">
-         {questions.map((item, index) => {
+        {/* Newquestion appear */}
+        <div className="list-group-item list-group-item-action py-3 lh-tight" key="newq" onClick={() => {}}>
+          <div className="d-flex w-100 align-items-center">
+            <strong className="mb-1">New Question...</strong>
+          </div>
+          <small className="ms-auto"></small>
+        </div>
+         {questions.sort((a, b) => b.id - a.id).map((item, index) => {
            return (
              <div className="list-group-item list-group-item-action py-3 lh-tight" key={index} onClick={() => {setQuestionId(item.id)}}>
               <div className="d-flex w-100 align-items-center">
                 <strong className="mb-1">{item.title}</strong>
               </div>
-              <small className="ms-auto">{item.author}</small>
+              <small className="ms-auto">{`#${item.id} | ${item.author}`}</small>
              </div>
            )
          })}
