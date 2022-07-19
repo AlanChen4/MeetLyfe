@@ -210,8 +210,8 @@ a
 
 input[type='text'], textarea
 {
-    border-radius: 10px;
-    width: min(70%, 500px);
+    width:100%;
+    border-radius: 8px;
     margin-top: 5px;
     margin-bottom: 5px;
 }

@@ -11,10 +11,11 @@ export default function handler(req, res) {
      const reqData = req.body;
 
      // add qdata from the POST request
-     const updated = questions.push({
+     let updated = questions;
+     updated.push({
        "id": questions.length + 1,
        "title": reqData.title,
-       "author": "TEMP_AUTHOR",
+       "author": reqData.author,
        "body": reqData.body,
        "a": reqData.a,
        "replies": []
