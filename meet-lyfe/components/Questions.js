@@ -11,14 +11,20 @@ export default function Questions(props) {
   //update this with new q logic 
   const postQuestion = function() {
     setShow(false);
-    console.log(document.getElementById('newqcheck').checked);
     newQuestion(
       document.getElementById('newqtitle').value, 
       document.getElementById('newqtext').value, 
       document.getElementById('newqcheck').checked,
-      "TEMP_AUTHOR",
-    )
+      new Date(),
+      "Michael Phillips",
+    );
+    location.reload();
   };
+
+  const dateStr = function(currQuestion) { 
+  let s = `at ${new Date(currQuestion.dateposted).toTimeString().substring(0, 5)} on ${new Date(currQuestion.dateposted).toLocaleDateString()}`
+   return s;
+  }
 
   // search questions by their respective questionId
   const getQuestionById = (questionId) => {
@@ -30,23 +36,25 @@ export default function Questions(props) {
   }
 
   // author is the person replying, questionId is of the question being responded to
-  const replyQuestion = (reply, author, questionId) => {
+  const replyQuestion = (reply, author, date, questionId) => {
     // TODO: setup auth to determine correct author
     const replyData = {
       'reply': reply,
-      'author': 'TEMP_AUTHOR',
+      'author': author,
+      'dateposted' : date,
       'questionId': questionId,
     }
     axios.post('/api/reply/', replyData);
   }
 
-  const newQuestion = (title, body, a, author) => {
+  const newQuestion = (title, body, a, date, author) => {
     // TODO: setup auth to determine correct author
     const qData = {
       'title' : title,
       'author': author,
       'body' : body,
-      'a': a
+      'dateposted': date,
+      'a': a,
     }
     axios.post('/api/questions/', qData);
   }
@@ -95,11 +103,11 @@ export default function Questions(props) {
      <div className="col-md-9 p-3">
        {/* details related to question in focus */}
        <div className="mb-3">
-         <h2 className="mb-3">{currQuestion ? currQuestion.title : ''}</h2>
+         <h2 className="mb-3">{currQuestion ? "#" + currQuestion.id + ": " + currQuestion.title : ''}</h2>
+         <p className="mb-3"><em>Asked by {currQuestion ? (currQuestion.a ? 'anonymous' : currQuestion.author) + " " + dateStr(currQuestion) : ''}</em></p>
          <p>{currQuestion ? currQuestion.body : ''}</p>
-         <p className="mb-3">Asked by {currQuestion ? (currQuestion.a ? 'anonymous' : currQuestion.author) : ''}</p>
-         <textarea className="form-control w-75" placeholder="Type your reponse here..." onChange={(event) => setReply(event.target.value)}/>
-         <button className="btn btn-dark" onClick={() => replyQuestion(reply, '', questionId)}>Reply</button>
+         <textarea className="form-control w-75" placeholder="Type your response here..." onChange={(event) => setReply(event.target.value)}/>
+         <button className="btn btn-dark" onClick={() => replyQuestion(reply, 'Michael Phillips', new Date(), questionId)}>Reply</button>
        </div>
        {/* reply thread */}
        <div className="mb-3">
@@ -107,7 +115,7 @@ export default function Questions(props) {
          {currQuestion ? currQuestion.replies.map((reply, index) => {
            return (
              <div className="card p-3 mb-2 w-75" key={index}>
-               <p><strong>{reply.author} said</strong></p>
+               <p><strong>{reply.author} said</strong> <em>{dateStr(reply)}</em></p>
                <p>{reply.reply}</p>
              </div>
            )
@@ -115,7 +123,7 @@ export default function Questions(props) {
        </div>
      </div>
         {/* modal */}
-        <Modal show={show} onHide={handleClose}>
+        <Modal centered = 'true' show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>New Question</Modal.Title>
         </Modal.Header>

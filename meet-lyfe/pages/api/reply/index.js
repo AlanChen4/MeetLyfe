@@ -9,7 +9,7 @@ export default function handler(req, res) {
     // add reply from the POST request
     for (const question of questions) {
       if (question.id == reqData.questionId) {
-        question.replies.push({reply: reqData.reply, author: reqData.author});
+        question.replies.push({reply: reqData.reply, author: reqData.author, dateposted : reqData.dateposted});
       }
     }
     

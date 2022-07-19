@@ -1,50 +1,26 @@
 [
     {
         "id": 1,
-        "title": "What truly, really, is JavaScript?",
+        "title": "Are there any good Italian restaurants in Cary?",
         "author": "Michael Phillips",
-        "body": "I don't understand what JavaScript is. Is it a language or something?",
-        "a": true,
+        "body": "My wife and I were looking to grab a bite at a nice restaurant while we were visiting the lovely MetLife Tech HQ in Cary, NC.",
+        "a": false,
+        "dateposted": "2022-07-19T20:50:13.355Z",
         "replies": [
             {
-                "author": "Brandon Kaminski",
-                "reply": "yes lmao get good"
+                "reply": "None that I can think of.",
+                "author": "Alan Chen",
+                "dateposted": "2022-07-19T20:50:18.979Z"
             }
         ]
     },
     {
         "id": 2,
-        "title": "Why are we here?",
+        "title": "Does anyone know how to rename multiple columns in SQL?",
         "author": "Michael Phillips",
-        "body": "Just to suffer? Nah, we're vibing",
-        "a": true,
-        "replies": [
-        ]
-    },
-    {
-        "id": 3,
-        "title": "What is this?",
-        "author": "Brandon Kaminski",
-        "body": "Anyone know?",
+        "body": "I am working on an SQL-heavy project for my team.\n\nI can do it column-by-column but am unsure of how it's done with more than one. Can someone help? Thanks!",
         "a": false,
-        "replies": [
-        ]
-    },
-    {
-        "id": 4,
-        "title": "MetLife is how old?",
-        "author": "Alan Chen",
-        "body": "I was trying to figure it out the other day.",
-        "a": false,
-        "replies": [
-            {
-                "author": "Brandon Kaminski",
-                "reply": "it was founded in 1868"
-            },
-            {
-                "author": "Alan Chen",
-                "reply": "thanks!"
-            }
-        ]
+        "dateposted": "2022-07-19T20:53:20.021Z",
+        "replies": []
     }
 ]

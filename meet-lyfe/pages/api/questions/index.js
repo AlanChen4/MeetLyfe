@@ -18,6 +18,7 @@ export default function handler(req, res) {
        "author": reqData.author,
        "body": reqData.body,
        "a": reqData.a,
+       "dateposted": reqData.dateposted,
        "replies": []
      });
      
