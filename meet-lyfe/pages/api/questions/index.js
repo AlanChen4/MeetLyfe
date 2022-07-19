@@ -22,8 +22,6 @@ export default function handler(req, res) {
      
      // write changes to json file
      fs.writeFileSync('./pages/api/questions.json', JSON.stringify(updated, null, 4));
- 
-     res.status(200).json({ message: 'success' });
     // TODO: write new reply data to json file 
     res.status(200).json({ message: 'Added new question' });
   }

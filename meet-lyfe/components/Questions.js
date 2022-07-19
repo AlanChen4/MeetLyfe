@@ -4,6 +4,7 @@ import axios from "axios";
 export default function Questions(props) {
   const questions = props.questions;
 
+
   // search questions by their respective questionId
   const getQuestionById = (questionId) => {
     for (const question of questions) {
@@ -36,7 +37,7 @@ export default function Questions(props) {
   // update current question in focus each time questionId changes
   useEffect(() => {
     setCurrQuestion(getQuestionById(questionId));
-  }, [questionId])
+  }, [questionId]) //all state vars in 2nd param get updated on every re-render (since react updates automatically)
 
   return (
    <div className="row">
@@ -45,9 +46,9 @@ export default function Questions(props) {
        <h2 className="text-center p-3">Questions</h2>
        <div className="list-group list-group-flush border-bottom overflow-auto">
         {/* Newquestion appear */}
-        <div className="list-group-item list-group-item-action py-3 lh-tight" key="newq" onClick={() => {}}>
+        <div className="list-group-item list-group-item-action py-3 lh-tight" key="newq">
           <div className="d-flex w-100 align-items-center">
-            <strong className="mb-1">New Question...</strong>
+            <button  className="btn-primary w-100" data-toggle="modal" data-target="#newqmodal" >New Question...</button>
           </div>
           <small className="ms-auto"></small>
         </div>
@@ -87,6 +88,26 @@ export default function Questions(props) {
          }) : ''}
        </div>
      </div>
+     {/* modal */}
+     <div id = "newqmodal" className="modal" tabIndex="-1" role="dialog">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Modal title</h5>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary">Save changes</button>
+              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
    </div>
   )
 }
