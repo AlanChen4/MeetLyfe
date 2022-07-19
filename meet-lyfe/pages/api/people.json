@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Cameron Harrington",
+        "team": "User Service Ownership"
+    },
+    {
+        "id": 2,
+        "name": "Alan Chen",
+        "team": "Capacity and Performance"
+    },
+    {
+        "id": 3,
+        "name": "Elfreda Kwawu",
+        "team": "Digital Automation"
+    },
+    {
+        "id": 4,
+        "name": "Joshita Padala",
+        "team": "Group Disability"
+    },
+    {
+        "id": 5,
+        "name": "Brandon Kaminski",
+        "team": "Alico Integration Office"
+    },
+    {
+        "id": 6,
+        "name": "Michael Martinez",
+        "team": "Retirement and Income Solutions"
+    }
+]
