@@ -215,3 +215,11 @@ input[type='text'], textarea
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+.bg-metlife-green {
+    background-color: #A3D043;
+}
+
+.bg-metlife-grey {
+    background-color: #D9D9D9;
+}
