@@ -223,3 +223,15 @@ input[type='text'], textarea
 .bg-metlife-grey {
     background-color: #D9D9D9;
 }
+.overflow
+{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.eventbutton
+{
+    width:100%;
+    font-weight: bold;
+}

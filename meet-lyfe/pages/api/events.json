@@ -1,0 +1,20 @@
+[
+    {
+        "id" : 1,
+        "name" : "Soccer on the Lawn",
+        "description" : "Come play soccer with us on the Cary campus Thursday at 11! Drinks will be provided!",
+        "virtual" : false,
+        "loc" : "Cary, NC",
+        "host" : 1,
+        "datetime" : "2022-07-21T15:00:00Z"
+    },
+    {
+        "id" : 2,
+        "name" : "Watch Turning Red w/ PAPN!",
+        "description" : "Come hang with PAPN and watch Pixar's newest film celebrating Chinese-Canadian culture!",
+        "virtual" : true,
+        "loc" : "Webex",
+        "host" : 1,
+        "datetime" : "2022-07-22T17:30:00Z"
+    }
+]
